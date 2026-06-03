@@ -17,9 +17,15 @@ def validate_time(time_string):
     hours_string = time_parts[0]
     minutes_string = time_parts[1]
 
-    # Step 3: Validate that both parts are actual numbers
+    # --- FIX START: Validate that both parts are exactly two digits long ---
+    if len(hours_string) != 2 or len(minutes_string) != 2:
+        print("Invalid format: Both hours and minutes should be exactly two digits.")
+        return False
+    # --- FIX END ---
+
+    # Validate that both parts are numeric
     if not hours_string.isdigit() or not minutes_string.isdigit():
-        print("Invalid format: Hours and minutes should be numeric.")
+        print("Invalid format: Both hours and minutes should be numeric.")
         return False
     
     # Step 4: Convert string to integers (Casting)
